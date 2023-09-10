@@ -1,0 +1,25 @@
+$light-theme: (
+  primary: #DCE2F0,
+  secondary: #50586C,
+  warning: #e74c3c
+);
+
+$dark-theme: (
+  primary: #50586C,
+  secondary: #DCE2F0,
+  warning: #e74c3c
+);
+
+.theme-light {
+  --primary-color: #{map-get($light-theme, primary)};
+  --secondary-color: #{map-get($light-theme, secondary)};
+  --hover-color: #{darken(#50586C, 10%)};
+  --warning-color: #{map-get($light-theme, warning)};
+}
+
+.theme-dark {
+  --primary-color: #{map-get($dark-theme, primary)};
+  --secondary-color: #{map-get($dark-theme, secondary)};
+  --hover-color: #{darken(#DCE2F0, 10%)};
+  --warning-color: #{map-get($dark-theme, warning)};
+}

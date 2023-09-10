@@ -1,4 +1,4 @@
-# adb-commander
+# heidi
 
 ## Project setup
 ```
