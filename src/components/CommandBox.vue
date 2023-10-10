@@ -56,6 +56,11 @@ export default {
         default:
           return `${command}`;
       }
+    },
+    getDeviceList() {
+      console.log('getDeviceList');
+      const command = `adb devices -l`;
+      ipcRenderer.send('execute-command-sync', command);
     }
   },
   mounted() {
@@ -63,6 +68,19 @@ export default {
       this.selectedOption = this.getOptions[0].value;
     }
   },
+  created() {
+    ipcRenderer.on('command-execution-result', (event, result) => {
+      console.log(event, result);
+      if (result.error) {
+        this.commandError = result.error;
+        console.error(`${this.$options.name}:: Command failed: ${result.error}`);
+        return;
+      }
+      console.log(`${this.$options.name}:: Command succeeded: ${result.message}`);
+    });
+
+    this.getDeviceList();
+  }
 };
 </script>
 

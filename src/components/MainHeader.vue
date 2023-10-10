@@ -55,7 +55,7 @@ export default {
     },
     saveLogcat() {
       const formattedDate = this.getFormattedDate();
-      const logcatName = `logcat_${formattedDate}.txt`;
+      const logcatName = `logcat_${formattedDate}.log`;
 
       try {
         ipcRenderer.send('execute-command-sync', `adb logcat -d > ./${logcatName}`);
@@ -65,6 +65,7 @@ export default {
         alert('로그 저장에 실패했습니다.');
       }
     },
+
   },
   mounted() {
   },
